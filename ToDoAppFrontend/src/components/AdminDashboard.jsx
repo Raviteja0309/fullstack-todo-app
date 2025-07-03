@@ -3,6 +3,9 @@ import { ArrowLeft, Users, CheckCircle, Clock, Trash2, User, ArrowDownUp, LogOut
 import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
+
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [userTodos, setUserTodos] = useState([]);
@@ -19,7 +22,7 @@ const AdminDashboard = () => {
   const getAllUsers = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5174/users/all_users', {
+      const response = await fetch(`${API_BASE_URL}/users/all_users`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -48,7 +51,7 @@ const AdminDashboard = () => {
     setLoading(true);
     setUserTodos([]);
     try {
-      const response = await fetch('http://localhost:5174/todos/all_todos', {
+      const response = await fetch(`${API_BASE_URL}/todos/all_todos`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -84,7 +87,7 @@ const AdminDashboard = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5174/users/delete_user`, {
+      const response = await fetch(`${API_BASE_URL}/users/delete_user`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

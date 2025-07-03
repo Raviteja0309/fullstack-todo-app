@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
+
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
@@ -17,7 +20,7 @@ function SignUp() {
     setSuccessMsg('');
 
     try {
-      const response = await fetch('http://localhost:5174/auth/signup', {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

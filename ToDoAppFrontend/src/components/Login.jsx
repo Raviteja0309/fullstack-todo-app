@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
+
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -14,7 +17,7 @@ function Login() {
     setErrorMsg('');
 
     try {
-      const response = await fetch('http://localhost:5174/auth/generate_token', {
+      const response = await fetch(`${API_BASE_URL}/auth/generate_token`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

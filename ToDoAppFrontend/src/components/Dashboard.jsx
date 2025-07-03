@@ -3,6 +3,9 @@ import { Trash2, Edit3, Plus, Check, X, LogOut, ArrowDownUp } from 'lucide-react
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
   const [userID, setUserID] = useState(() => {
@@ -31,7 +34,7 @@ const Dashboard = () => {
     console.log(userID);
 
     try {
-      const response = await fetch('http://localhost:5174/todos/all_todos', {
+      const response = await fetch(`${API_BASE_URL}/todos/all_todos`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -60,7 +63,7 @@ const Dashboard = () => {
   // Add new todo
   const addTodo = async () => {
     try {
-      const response = await fetch('http://localhost:5174/todos/add_todo', {
+      const response = await fetch(`${API_BASE_URL}/todos/add_todo`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -96,7 +99,7 @@ const Dashboard = () => {
   // Delete todo
   const deleteTodo = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5174/todos/delete_todo`, {
+      const response = await fetch(`${API_BASE_URL}/todos/delete_todo`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -132,7 +135,7 @@ const Dashboard = () => {
   // Update todo
   const updateTodo = async () => {
     try {
-      const response = await fetch(`http://localhost:5174/todos/update_todo`, {
+      const response = await fetch(`${API_BASE_URL}/todos/update_todo`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
