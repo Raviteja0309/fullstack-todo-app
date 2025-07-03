@@ -1,0 +1,7 @@
+[build]
+  base = "ToDoAppFrontend"
+  publish = "ToDoAppFrontend/dist"
+  command = "npm run build"
+
+[build.environment]
+  VITE_API_BASE_URL = "https://fullstack-todo-app-jr5j.onrender.com"
