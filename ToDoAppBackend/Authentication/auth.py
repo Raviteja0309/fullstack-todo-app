@@ -14,7 +14,7 @@ config = dotenv_values(".env")
 
 SECRET_KEY = config.get("SECRET_KEY")
 ALGORITHM = config.get("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = int(config.get("ACCESS_TOKEN_EXPIRE_MINUTES"))
+ACCESS_TOKEN_EXPIRE_MINUTES = int(config.get("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
 
 def authenticate_user(username: str, password: str):
     with DbConnection() as conn:
